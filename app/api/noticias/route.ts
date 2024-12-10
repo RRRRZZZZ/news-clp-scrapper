@@ -23,5 +23,16 @@ export async function GET() {
   const events = await fetchEventsFromPage();
   eventsToEndpoint.push(...events);
 
-  return NextResponse.json(eventsToEndpoint);
+  const response = NextResponse.json(eventsToEndpoint);
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  response.headers.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
+
+  return response;
 }
