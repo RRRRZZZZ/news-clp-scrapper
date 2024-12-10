@@ -1,9 +1,9 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 
-export async function GET(request: Request) {
-  const eventsToEndpoint: any[] = [];
+export async function GET() {
+  const eventsToEndpoint: { title: string; imgSrc: string }[] = [];
 
   const fetchEventsFromPage = async () => {
     const response = await fetch("https://chile.as.com/noticias/futbol/");
