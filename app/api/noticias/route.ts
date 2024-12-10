@@ -14,9 +14,10 @@ export async function GET() {
       dom.window.document.querySelectorAll(".col-md-4.col-sm-6.col-xs-12")
     ).map((event) => {
       const title = event.querySelector(".s__tl a")?.textContent?.trim() || "";
+      const link = event.querySelector(".s__tl a")?.getAttribute("href") || "";
       const imgSrc = event.querySelector(".mm__img")?.getAttribute("src") || "";
 
-      return { title, imgSrc };
+      return { title, link, imgSrc };
     });
   };
 
@@ -35,4 +36,5 @@ export async function GET() {
   );
 
   return response;
+  // /api/noticias
 }
